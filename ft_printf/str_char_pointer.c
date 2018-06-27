@@ -1,0 +1,98 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   str_char_pointer.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dysotoma <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/24 19:15:06 by dysotoma          #+#    #+#             */
+/*   Updated: 2018/06/24 19:15:11 by dysotoma         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+void	s(int *formatted, va_list arg, t_type *type, int base)
+{
+	int i;
+	char *str;
+
+	i = 0;
+	if (formatted[(int) 'l'] == 0)
+	{
+		(void)base;
+		str = va_arg (arg, char*);
+		if (type->bytes + ft_strlen(str) >= MAX_BUFF)
+			resize(type);
+		if (formatted[(int)'s'] == 1)
+			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, str, ft_strlen(str)));
+		reset(formatted);
+	}
+	else if (formatted[(int) 'l'] == 1)
+		S(formatted, arg, type, base);
+}
+
+void	S(int *formatted, va_list arg, t_type *type, int base)
+{
+	int i;
+	wchar_t *str;
+
+	i = 0;
+	(void)base;
+	str = va_arg (arg, wchar_t*);
+	if (formatted[(int)'S'] == 1)
+		while (str[i])
+			write(1, &str[i++], 1);
+	type->bytes += i;
+}
+
+void	p(int *formatted, va_list arg, t_type *type, int base)
+{
+	char	*ptr;
+
+	(void)base;
+	ptr = ft_itoa_base((int64_t)va_arg (arg, void*), 16);
+	if (formatted[(int)'p'] == 1)
+	{
+		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "0x", 2));
+		if (!*ptr)
+			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "0", 1));
+		else
+			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, ptr, ft_strlen(ptr)));
+	}
+	reset(formatted);
+}
+
+void	c(int *formatted, va_list arg, t_type *type, int base)
+{
+	char c;
+
+	if (formatted[(int) 'l'] == 0)
+	{
+		(void)base;
+		c = (char)va_arg (arg, int);
+		if (type->bytes + 1 >= MAX_BUFF)
+			resize(type);
+		if (formatted[(int)'c'] == 1)
+		{
+			*(type->buff + type->bytes) = c;
+			type->bytes += 1;
+		}
+		reset(formatted);
+	}
+	else if (formatted[(int) 'l'] == 1)
+		C(formatted, arg, type, base);
+}
+
+void	C(int *formatted, va_list arg, t_type *type, int base)
+{
+	int i;
+	wchar_t C;
+
+	i = 0;
+	(void)base;
+	C = va_arg (arg, wchar_t);
+	if (formatted[(int)'C'] == 1)
+		write(1, &C, 1);
+	type->bytes += 1;
+}
