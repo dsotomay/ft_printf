@@ -47,10 +47,10 @@ void	put_min_max_width(int *formatted, t_type *type)
 		type->width -= tmp;
 	if (type->str[0] == '-')
 		i = 1;
-	if (!formatted[(int)'-'] && !formatted[(int)'0' && type->precision])
+	if (!formatted[(int)'-'] && !formatted[(int)'0'])
 		while (i - 1 < type->width)
 			*(type->buff + type->bytes + i++) = ' ';
-	else if (!formatted[(int)'-'] && formatted[(int)'0'] && type->precision)
+	else if (!formatted[(int)'-'] && formatted[(int)'0'] && !type->precision)
 		while (i - 1 < type->width)
 			*(type->buff + type->bytes + i++) = '0';
 	type->bytes += i;
