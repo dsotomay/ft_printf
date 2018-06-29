@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#define INIT int i = 0; int tmp
 
 void	resize(t_type *type)
 {
@@ -38,19 +39,18 @@ int		check_length(int *formatted)
 
 void	put_min_max_width(int *formatted, t_type *type)
 {
-	int	tmp;
-	int	i;
-
-	i = 0;
+	INIT;
 	tmp = ft_strlen(type->str);
 	if (type->precision > tmp)
 		type->width -= type->precision;
 	else if (type->width > tmp)
 		type->width -= tmp;
+	if (type->str[0] == '-')
+		i = 1;
 	if (!formatted[(int)'-'] && !formatted[(int)'0'])
 		while (i - 1 < type->width)
 			*(type->buff + type->bytes + i++) = ' ';
-	else if (!formatted[(int)'-'] && formatted[(int)'0'] && type->precision)
+	else if (!formatted[(int)'-'] && formatted[(int)'0'] && type->precision);
 		while (i - 1 < type->width)
 			*(type->buff + type->bytes + i++) = '0';
 	type->bytes += i;
