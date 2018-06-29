@@ -59,3 +59,12 @@ void	l(int *formatted, va_list arg, t_type *type, int base)
 			type->str = ft_utoa_base(va_arg (arg, unsigned long),  base);
 	}
 }
+
+void	j(int *formatted, va_list arg, t_type *type, int base)
+{
+	// type->str = ft_strnew(1);
+	if ((formatted[(int)'d'] || formatted[(int)'i']) == 1)
+		type->str = ft_itoa_base(va_arg (arg, intmax_t), base);
+	else
+		type->str = ft_utoa_base(va_arg (arg, uintmax_t), base);
+}

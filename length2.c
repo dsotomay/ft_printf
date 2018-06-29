@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   length2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dysotoma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/23 13:56:27 by dysotoma          #+#    #+#             */
-/*   Updated: 2018/05/23 13:56:32 by dysotoma         ###   ########.fr       */
+/*   Created: 2018/06/27 16:58:51 by dysotoma          #+#    #+#             */
+/*   Updated: 2018/06/27 16:58:54 by dysotoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-int	main(int ac,  char **av)
+void	j(int *formatted, va_list arg, t_type *type, int base)
 {
-	// unsigned int	*p = 2147483648;
-	printf("%p\n", av[2]);
-
-	if (ac)
-	{
-		printf("\nbytes returned = %i\n: ", ft_printf("mine = %40.2d", 32424242));
-		printf("real printf = |%-7.3o|", 42);
-		printf("real printf = %40.2d", 32424242);
-		//need to handle %5%
-	}
+	// type->str = ft_strnew(1);
+	if ((formatted[(int)'d'] || formatted[(int)'i']) == 1)
+		type->str = ft_itoa_base(va_arg (arg, int64_t), base);
+	else
+		type->str = ft_utoa_base(va_arg (arg, size_t), base);
 }

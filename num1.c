@@ -16,17 +16,12 @@ void	d(int *formatted, va_list arg, t_type *type, int base)
 {
 	base = 10;
 	if (check_length(formatted))
-	{
 		set_length(formatted, arg, type, base);
-		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, ft_strlen(type->str)));
-		// free(type->str);
-	}
 	else
-	{
 		type->str = ft_itoa_base((va_arg (arg, int)), base);
-		if (formatted[(int)'d'] == 1)
-			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, ft_strlen(type->str)));
-	}
+	put_min_max_width(formatted, type);
+	if (formatted[(int)'d'] == 1)
+		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, ft_strlen(type->str)));
 	reset(formatted);
 }
 

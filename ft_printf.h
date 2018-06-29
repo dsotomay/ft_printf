@@ -44,6 +44,7 @@ void	set_specifier(int *formatted, va_list arg, t_type *type);
 void	set_length(int *formatted, va_list arg, t_type *type, int base);
 void	set_width(char *format, int *i, t_type *type);
 int		check_length(int *formatted);
+void	put_min_max_width(int *formatted, t_type *type);
 void	reset(int *formatted);
 FUNC	spec(int num);
 
@@ -74,17 +75,15 @@ void		h(int *formatted, va_list arg, t_type *type, int base);
 void		hh(int *formatted, va_list arg, t_type *type, int base);
 void		l(int *formatted, va_list arg, t_type *type, int base);
 void		ll(int *formatted, va_list arg, t_type *type, int base);
-// void		j(int *formatted, va_list arg, t_type *type, int base);
-// void		z(int *formatted, va_list arg, t_type *type, int base);
+void		j(int *formatted, va_list arg, t_type *type, int base);
+void		z(int *formatted, va_list arg, t_type *type, int base);
 
 /*
 **	flags
 */
 
-// void		hash(int *formatted, va_list arg, t_type *type, int base);
-// void		zero(int *formatted, va_list arg, t_type *type, int base);
+void		hash(int *formatted, va_list arg, t_type *type, int base);
 // void		minus(int *formatted, va_list arg, t_type *type, int base);
 // void		plus(int *formatted, va_list arg, t_type *type, int base);
-// void		space(int *formatted, va_list arg, t_type *type, int base);
 
 #endif

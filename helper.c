@@ -27,12 +27,42 @@ void	set_width(char *format, int *i, t_type *type)
 		type->width = ft_atoi(format + *i);
 	else
 		type->precision = ft_atoi(format + *i);
-	*i += type->width;
+	while (ft_isdigit(format[*i]))
+		(*i)++;
 }
 
 int		check_length(int *formatted)
 {
 	return (formatted[104] || formatted[106] || formatted[108] || formatted[122]);
+}
+
+void	put_min_max_width(int *formatted, t_type *type)
+{
+	int	tmp;
+	int	i;
+
+	i = 0;
+	tmp = ft_strlen(type->str);
+	if (type->precision > tmp)
+		type->width -= type->precision;
+	else
+		type->width -= tmp;
+	if (!formatted[(int)'-'] && !formatted[(int)'0'])
+		while (i - 1 < type->width)
+			*(type->buff + type->bytes + i++) = ' ';
+	else if (!formatted[(int)'-'] && formatted[(int)'0'] && type->precision)
+		while (i - 1 < type->width)
+			*(type->buff + type->bytes + i++) = '0';
+	type->bytes += i;
+	if (type->str[0] == '-')
+		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "-", 1));
+	else if (formatted[43] && (formatted[(int)'d'] || formatted[(int)'i']))
+		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "+", 1));
+	i = -1;
+	if (type->precision > tmp)
+		while (i - 1 < type->precision)
+			*(type->buff + type->bytes + i++) = '0';
+	type->bytes += i;
 }
 
 void	reset(int *formatted)

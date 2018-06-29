@@ -44,10 +44,10 @@ void	set_length(int *formatted, va_list arg, t_type *type, int base)
 	int			i;
 	t_dispatch	dispatch;
 
-	i = 97;
-	while (i >= 97 && i <= 122)
+	i = 104;
+	while (i >= 104 && i <= 122)
 	{
-		while (specifier(i) || flags(i))
+		while (specifier(i))
 			i++;
 		if (formatted[i])
 		{
@@ -56,20 +56,20 @@ void	set_length(int *formatted, va_list arg, t_type *type, int base)
 			break ;
 		}
 		else
-			i++;
+			i += 2;
 	}
 	// set_flag(formatted, arg, type);
 }
 
 // void	set_flag(int *formatted, va_list arg, t_type *type)
 // {
-// 	// int i;
+// 	int i;
 
-// 	// i = 32;
-// 	// while (formatted[i] >= 32 && formatted[i] <= 48)
-// 	// {
+// 	i = 32;
+// 	while (formatted[i] >= 32 && formatted[i] <= 48)
+// 	{
 
-// 	// }
+// 	}
 // }
 
 void			handle(char *format, va_list arg, int *i, t_type *type)
@@ -84,7 +84,7 @@ void			handle(char *format, va_list arg, int *i, t_type *type)
 		|| (format[*i] == '.') || specifier(format[*i]))
 		{
 			if (ft_isdigit(format[*i]) && format[*i] != '0')
-				set_width(format + *i, i, type);
+				set_width(format, i, type);
 			if (specifier(format[*i]))
 				end = 1;
 			formatted[(int)format[*i]] += 1;
@@ -97,6 +97,8 @@ void			handle(char *format, va_list arg, int *i, t_type *type)
 		}
 	}
 	set_specifier(formatted, arg, type);
+	if (type->width)
+		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, format + *i, 1));
 }
 
 void			parse(char *format, va_list arg, int *i, t_type *type)

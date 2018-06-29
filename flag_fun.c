@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   flag_fun.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dysotoma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/23 13:56:27 by dysotoma          #+#    #+#             */
-/*   Updated: 2018/05/23 13:56:32 by dysotoma         ###   ########.fr       */
+/*   Created: 2018/06/27 19:26:46 by dysotoma          #+#    #+#             */
+/*   Updated: 2018/06/27 19:26:49 by dysotoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-int	main(int ac,  char **av)
-{
-	// unsigned int	*p = 2147483648;
-	printf("%p\n", av[2]);
+// void		hash(int *formatted, va_list arg, t_type *type, int base)
+// {
+// 	char *str;
 
-	if (ac)
-	{
-		printf("\nbytes returned = %i\n: ", ft_printf("mine = %40.2d", 32424242));
-		printf("real printf = |%-7.3o|", 42);
-		printf("real printf = %40.2d", 32424242);
-		//need to handle %5%
-	}
-}
+// 	(void)base;
+// 	if (formatted[(int)'o'])
+// 		str = "0";
+	
+// 	type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, str,ft_strlen(str)));
+// }
+// void		minus(int *formatted, va_list arg, t_type *type, int base);
+// void		plus(int *formatted, va_list arg, t_type *type, int base);
+
