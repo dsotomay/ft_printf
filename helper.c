@@ -45,7 +45,7 @@ void	put_min_max_width(int *formatted, t_type *type)
 	tmp = ft_strlen(type->str);
 	if (type->precision > tmp)
 		type->width -= type->precision;
-	else
+	else if (type->width > tmp)
 		type->width -= tmp;
 	if (!formatted[(int)'-'] && !formatted[(int)'0'])
 		while (i - 1 < type->width)

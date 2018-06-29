@@ -20,14 +20,13 @@ int ft_printf(char *format, ...)
 
 	type.count = 1;
 	type.bytes = 0;
+	type.width = 0;
+	type.precision = 0;
 	type.buff = ft_strnew(1023);
 	while (format[i] && type.bytes != (size_t)-1)
 	{
 		if (format[i] == '%' && !format[i + 1])
-		{
-			// type.bytes = -1;
 			break ;
-		}
 		else
 			parse(format, arg, &i, &type);
 	}

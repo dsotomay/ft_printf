@@ -20,9 +20,9 @@ int	main(int ac,  char **av)
 
 	if (ac)
 	{
-		printf("\nbytes returned = %i\n: ", ft_printf("mine = %40.2d", 32424242));
+		printf("\nbytes returned = %i\n: ", ft_printf("%d", 42));
 		printf("real printf = |%-7.3o|", 42);
-		printf("real printf = %40.2d", 32424242);
+		printf("%d", 42);
 		//need to handle %5%
 	}
 }
