@@ -46,6 +46,7 @@ void	set_width(char *format, int *i, t_type *type);
 int		check_length(int *formatted);
 void	put_min_max_width(int *formatted, t_type *type);
 void	reset(int *formatted);
+void	width(int *formatted, t_type *type, int i);
 FUNC	spec(int num);
 
 /*

@@ -45,15 +45,11 @@ void	put_min_max_width(int *formatted, t_type *type)
 		type->width -= tmp + type->precision;
 	else if (type->width > tmp)
 		type->width -= tmp;
+	else if (type->width < tmp || type->width < type->precision)
+		type->width = 0;
 	if (type->str[0] == '-' && type->width)
 		i = 1;
-	if (!formatted[(int)'-'] && !formatted[(int)'0'] && type->width)
-		while (i - 1 < type->width)
-			*(type->buff + type->bytes + i++) = ' ';
-	else if (!formatted[(int)'-'] && formatted[(int)'0'] && !type->precision)
-		while (i - 1 < type->width)
-			*(type->buff + type->bytes + i++) = '0';
-	type->bytes += i;
+	width(formatted, type, i);
 	minus_plus(formatted, type);
 	i = 0;
 	if (type->precision > tmp)
