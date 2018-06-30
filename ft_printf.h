@@ -83,7 +83,6 @@ void		z(int *formatted, va_list arg, t_type *type, int base);
 */
 
 void		hash(int *formatted, va_list arg, t_type *type, int base);
-// void		minus(int *formatted, va_list arg, t_type *type, int base);
-// void		plus(int *formatted, va_list arg, t_type *type, int base);
+void		minus_plus(int *formatted, t_type *type);
 
 #endif

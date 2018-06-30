@@ -45,7 +45,7 @@ void	put_min_max_width(int *formatted, t_type *type)
 		type->width -= tmp + type->precision;
 	else if (type->width > tmp)
 		type->width -= tmp;
-	if (type->str[0] == '-')
+	if (type->str[0] == '-' && type->width)
 		i = 1;
 	if (!formatted[(int)'-'] && !formatted[(int)'0'] && type->width)
 		while (i - 1 < type->width)
@@ -54,13 +54,10 @@ void	put_min_max_width(int *formatted, t_type *type)
 		while (i - 1 < type->width)
 			*(type->buff + type->bytes + i++) = '0';
 	type->bytes += i;
-	if (type->str[0] == '-')
-		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "-", 1));
-	else if (formatted[43] && (formatted[(int)'d'] || formatted[(int)'i']))
-		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "+", 1));
-	i = tmp;
+	minus_plus(formatted, type);
+	i = 0;
 	if (type->precision > tmp)
-		while (i < type->precision)
+		while (i + tmp -1 < type->precision)
 			*(type->buff + type->bytes + i++) = '0';
 	type->bytes += i;
 }
