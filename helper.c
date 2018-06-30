@@ -42,7 +42,7 @@ void	put_min_max_width(int *formatted, t_type *type)
 	INIT;
 	tmp = ft_strlen(type->str);
 	if (type->width > tmp + type->precision)
-		type->width -= tmp + type->precision;
+		type->width -= tmp + type->precision + 1;
 	else if (type->width > tmp)
 		type->width -= tmp;
 	else if (type->width < tmp || type->width < type->precision)
@@ -53,7 +53,7 @@ void	put_min_max_width(int *formatted, t_type *type)
 	minus_plus(formatted, type);
 	i = 0;
 	if (type->precision > tmp)
-		while (i + tmp -1 < type->precision)
+		while (i + tmp < type->precision)
 			*(type->buff + type->bytes + i++) = '0';
 	type->bytes += i;
 }
