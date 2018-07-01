@@ -97,8 +97,8 @@ void			handle(char *format, va_list arg, int *i, t_type *type)
 		}
 	}
 	set_specifier(formatted, arg, type);
-	if (type->width)
-		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, format + *i, 1));
+	while (type->width-- && formatted[(int)'-'])
+		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "0", 1));
 }
 
 void			parse(char *format, va_list arg, int *i, t_type *type)
