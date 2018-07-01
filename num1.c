@@ -22,7 +22,7 @@ void	d(int *formatted, va_list arg, t_type *type, int base)
 	put_min_max_width(formatted, type);
 	if (formatted[(int)'d'] == 1)
 		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, ft_strlen(type->str)));
-	reset(formatted);
+	// reset(formatted);
 }
 
 void	i(int *formatted, va_list arg, t_type *type, int base)
@@ -32,9 +32,10 @@ void	i(int *formatted, va_list arg, t_type *type, int base)
 		set_length(formatted, arg, type, base);
 	else
 		type->str = ft_itoa_base((va_arg (arg, int)), base);
+	put_min_max_width(formatted, type);
 	if (formatted[(int)'i'] == 1)
 		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, ft_strlen(type->str)));
-	reset(formatted);
+	// reset(formatted);
 }
 
 void	o(int *formatted, va_list arg, t_type *type, int base)

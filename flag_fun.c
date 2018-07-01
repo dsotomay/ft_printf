@@ -25,16 +25,18 @@
 
 void	width(int *formatted, t_type *type, int i)
 {
-	if (!formatted[(int)'-'] && !formatted[(int)'0'] && type->width)
+	if (formatted[(int)' '] && type->str[0] != '-')
+		*(type->buff + type->bytes + i++) = ' ';
+	if (!formatted[(int)'-'] && formatted[(int)'.'] && type->width)
 	{
-		while (i - 1 < type->width)
+		while (i < ft_abs(type->width, type->precision))
 			*(type->buff + type->bytes + i++) = ' ';
 		type->width = 0;
 	}
 	else if (!formatted[(int)'-'] && formatted[(int)'0'] && !type->precision)
 	{
 		minus_plus(formatted, type);
-		while (i - 1 < type->width && type->width)
+		while (i < type->width && type->width)
 			*(type->buff + type->bytes + i++) = '0';
 		type->precision = 0;
 	}
@@ -43,14 +45,17 @@ void	width(int *formatted, t_type *type, int i)
 
 void	minus_plus(int *formatted, t_type *type)
 {
-	if (type->str[0] == '-')
+	if (!formatted[(int)'s'])
 	{
-		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "-", 1));
-		type->str++;
+		if (type->str[0] == '-')
+		{
+			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "-", 1));
+			type->str++;
+		}
+		else if (formatted[43] && (formatted[(int)'d'] || formatted[(int)'i']))
+			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "+", 1));
+		formatted[(int)'-'] = 0;
+		formatted[(int)'+'] = 0;
 	}
-	else if (formatted[43] && (formatted[(int)'d'] || formatted[(int)'i']))
-		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "+", 1));
-	formatted[(int)'-'] = 0;
-	formatted[(int)'+'] = 0;
 }
 

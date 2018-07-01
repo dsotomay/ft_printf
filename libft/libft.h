@@ -27,6 +27,11 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+/*
+**	math
+*/
+
+int				ft_abs(int a, int b);
 int				ft_atoi(const char *str);
 char			*ft_itoa(int n);
 char			*ft_itoa_base(int64_t n, int base);

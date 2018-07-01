@@ -24,8 +24,10 @@ void	s(int *formatted, va_list arg, t_type *type, int base)
 		if (type->bytes + ft_strlen(type->str) >= MAX_BUFF)
 			resize(type);
 		if (formatted[(int)'s'] == 1)
-			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, ft_strlen(type->str)));
-		reset(formatted);
+		{
+			put_min_max_width(formatted, type);
+			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, !type->precision ? ft_strlen(type->str) : type->precision));
+		}
 	}
 	else if (formatted[(int) 'l'] == 1)
 		S(formatted, arg, type, base);
