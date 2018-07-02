@@ -56,7 +56,7 @@ void	set_length(int *formatted, va_list arg, t_type *type, int base)
 			break ;
 		}
 		else
-			i += 2;
+			i++;
 	}
 	// set_flag(formatted, arg, type);
 }

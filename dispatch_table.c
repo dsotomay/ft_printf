@@ -26,8 +26,8 @@ static	FUNC	leng(FUNC func[], int num)
 {
 	func[(int)'h'] = h;
 	func[(int)'l'] = l;
-// 	func[(int)'j'] = j;
-// 	func[(int)'z'] = z;
+	func[(int)'j'] = j;
+	func[(int)'z'] = z;
 	return (func[num]);
 }
 

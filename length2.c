@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-void	j(int *formatted, va_list arg, t_type *type, int base)
+void	z(int *formatted, va_list arg, t_type *type, int base)
 {
-	// type->str = ft_strnew(1);
+	
 	if ((formatted[(int)'d'] || formatted[(int)'i']) == 1)
 		type->str = ft_itoa_base(va_arg (arg, int64_t), base);
 	else
