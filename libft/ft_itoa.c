@@ -66,10 +66,8 @@ static void		ft_renum(char *str, int n, int i)
 
 char			*ft_itoa(int n)
 {
-	int		i;
 	char	*str;
 
-	i = 0;
 	if (!(str = ft_strnew(ft_numcount(n))))
 		return (NULL);
 	ft_renum(str, n, ft_numcount(n) - 1);

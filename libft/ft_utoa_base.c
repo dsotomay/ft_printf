@@ -26,5 +26,5 @@ char	*ft_utoa_base(uint64_t num, int base)
 		*--ptr = num_rep[num % base];
 		num /= base;
 	}
-	return (ptr);
+	return (!*ptr ? ptr - 1 : ptr);
 }
