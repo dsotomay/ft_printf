@@ -58,7 +58,6 @@ void	p(int *formatted, va_list arg, t_type *type, int base)
 		else
 			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, ptr, ft_strlen(ptr)));
 	}
-	reset(formatted);
 }
 
 void	c(int *formatted, va_list arg, t_type *type, int base)
@@ -76,7 +75,6 @@ void	c(int *formatted, va_list arg, t_type *type, int base)
 			*(type->buff + type->bytes) = c;
 			type->bytes += 1;
 		}
-		reset(formatted);
 	}
 	else if (formatted[(int) 'l'] == 1)
 		C(formatted, arg, type, base);
@@ -88,7 +86,9 @@ void	C(int *formatted, va_list arg, t_type *type, int base)
 
 	(void)base;
 	C = (wchar_t)va_arg (arg, int);
-	if (formatted[(int)'C'] == 1)
-		write(1, &C, 1);
-	type->bytes += 1;
+	if (formatted[(int)'c'] == 1)
+	{
+		*(type->buff + type->bytes) = c;
+		type->bytes += 1;
+	}
 }
