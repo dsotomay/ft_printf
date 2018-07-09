@@ -35,5 +35,5 @@ int ft_printf(char *format, ...)
 		write(1, type.buff, type.bytes);
 	if (*type.buff)
 		free(type.buff);
-	return (type.bytes != (size_t)-1 ? type.bytes : -1);
+	return (type.bytes != (size_t)-1 ? (int64_t)type.bytes : -1);
 }

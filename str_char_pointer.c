@@ -14,9 +14,6 @@
 
 void	s(int *formatted, va_list arg, t_type *type, int base)
 {
-	int i;
-
-	i = 0;
 	if (formatted[(int) 'l'] == 0)
 	{
 		(void)base;
@@ -26,7 +23,7 @@ void	s(int *formatted, va_list arg, t_type *type, int base)
 		if (formatted[(int)'s'] == 1)
 		{
 			put_min_max_width(formatted, type);
-			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, !type->precision ? ft_strlen(type->str) : type->precision));
+			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, !type->precision ? (int64_t)ft_strlen(type->str) : type->precision));
 		}
 	}
 	else if (formatted[(int) 'l'] == 1)
@@ -87,12 +84,10 @@ void	c(int *formatted, va_list arg, t_type *type, int base)
 
 void	C(int *formatted, va_list arg, t_type *type, int base)
 {
-	int i;
 	wchar_t C;
 
-	i = 0;
 	(void)base;
-	C = va_arg (arg, wchar_t);
+	C = (wchar_t)va_arg (arg, int);
 	if (formatted[(int)'C'] == 1)
 		write(1, &C, 1);
 	type->bytes += 1;

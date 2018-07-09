@@ -12,6 +12,14 @@
 
 #include "ft_printf.h"
 #include <stdio.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <strings.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <limits.h>
 
 int	main(int ac,  char **av)
 {
@@ -57,7 +65,33 @@ int	main(int ac,  char **av)
 	if (ac)
 	{
 
-    	ft_printf("unsigned char        a = %hhu sizeof a = %lu\n", a,sizeof(a));
+		ft_printf("%d", 42);
+		ft_printf("Kashim a %d histoires à raconter", 1001);
+		ft_printf("Il fait au moins %d\n", -8000);
+		ft_printf("%d", -0);
+		ft_printf("%d", 0);
+		ft_printf("%d", INT_MAX);
+		ft_printf("%d", INT_MIN);
+		ft_printf("%d", INT_MIN - 1);
+		ft_printf("%d", INT_MAX + 1);
+		ft_printf("%%d 0000042 == |%d|\n", 0000042);
+		ft_printf("%%d \t == |%d|\n", '\t');
+		ft_printf("%%d Lydie == |%d|\n", 'L'+'y'+'d'+'i'+'e');
+
+		printf("%d", 42);
+		printf("Kashim a %d histoires à raconter", 1001);
+		printf("Il fait au moins %d\n", -8000);
+		printf("%d", -0);
+		printf("%d", 0);
+		printf("%d", INT_MAX);
+		printf("%d", INT_MIN);
+		printf("%d", INT_MIN - 1);
+		printf("%d", INT_MAX + 1);
+		printf("%%d 0000042 == |%d|\n", 0000042);
+		printf("%%d \t == |%d|\n", '\t');
+		printf("%%d Lydie == |%d|\n", 'L'+'y'+'d'+'i'+'e');
+    	
+		ft_printf("unsigned char        a = %hhu sizeof a = %lu\n", a,sizeof(a));
     	ft_printf("unsigned int     b = %u sizeof b = %lu\n",b,sizeof(b));
     	ft_printf("unsigned long        c = %lu sizeof c = %lu\n",c,sizeof(c));
     	ft_printf("unsigned short       d = %hu sizeof d = %lu\n",d,sizeof(d));
