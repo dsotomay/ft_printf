@@ -86,9 +86,9 @@ void	C(int *formatted, va_list arg, t_type *type, int base)
 
 	(void)base;
 	C = (wchar_t)va_arg (arg, int);
-	if (formatted[(int)'c'] == 1)
+	if (formatted[(int)'C'] == 1)
 	{
-		*(type->buff + type->bytes) = c;
+		*(type->buff + type->bytes) = C;
 		type->bytes += 1;
 	}
 }
