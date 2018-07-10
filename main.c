@@ -23,6 +23,7 @@
 
 int	main(int ac,  char **av)
 {
+	wchar_t wz [3] = L"@@";
 	wchar_t		c = L'\x82';
 
 	// int         r00 = 0;
@@ -71,6 +72,10 @@ int	main(int ac,  char **av)
 		
 		printf("%C\n", c);
 		printf("%C\n", L'ø');
+
+		ft_printf("mines %ls", wz);
+		puts("theirs\n"); 
+		printf("%ls", wz); 
 
 		// ft_printf("%d", 42);
 		// ft_printf("Kashim a %d histoires à raconter", 1001);

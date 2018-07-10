@@ -12,16 +12,16 @@
 
 #include "ft_printf.h"
 
-// void		hash(int *formatted, va_list arg, t_type *type, int base)
-// {
-// 	char *str;
-
-// 	(void)base;
-// 	if (formatted[(int)'o'])
-// 		str = "0";
-	
-// 	type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, str,ft_strlen(str)));
-// }
+void		hash(int *formatted, t_type *type)
+{
+	if ((formatted[(int)'o'] || formatted[(int)'O']) && *type->str != '0')
+		type->str = "0";
+	if (formatted[(int)'x'])
+		type->str = "0X";
+	else if (formatted[(int)'X'])
+		type->str = "0x";
+	type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str,ft_strlen(type->str)));
+}
 
 void	width(int *formatted, t_type *type, int i)
 {
