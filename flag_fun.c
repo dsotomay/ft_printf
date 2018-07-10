@@ -17,20 +17,11 @@ void		hash(int *formatted, t_type *type)
 	if (formatted[(int)'#'])
 	{
 		if ((formatted[(int)'o'] || formatted[(int)'O']) && *type->str != '0')
-		{
-			*(type->buff + type->bytes) = "0";
-			type->bytes += 1;
-		}
+			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "0", 1));
 		if (formatted[(int)'X'])
-		{
-			*(type->buff + type->bytes) = "0X";
-			type->bytes += 2;
-		}
+			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "0X", 2));
 		else if (formatted[(int)'x'])
-		{
-			*(type->buff + type->bytes) = "0x";
-			type->bytes += 2;
-		}
+			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "0x", 2));
 	}
 }
 
