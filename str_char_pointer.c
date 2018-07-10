@@ -36,7 +36,7 @@ void	S(int *formatted, va_list arg, t_type *type, int base)
 
 	(void)base;
 	str = va_arg (arg, wchar_t*);
-	if (formatted[(int)'S'] == 1)
+	if (formatted[(int)'S'] || (formatted[(int)'s'] && formatted[(int)'l']))
 	{
 		put_min_max_width(formatted, type);
 		type->bytes += ft_strlen(ft_ws_to_strncpy(type->buff + type->bytes, str, !type->precision ? (int64_t)ft_strlen(type->str) : type->precision));
