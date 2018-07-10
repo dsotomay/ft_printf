@@ -50,14 +50,14 @@ void	X(int *formatted, va_list arg, t_type *type, int base)
 
 	i = 0;
 	base = 16;
+	put_min_max_width(formatted, type);
+	hash(formatted, type);
 	if (check_length(formatted))
 		set_length(formatted, arg, type, base);
 	else
 		type->str = ft_utoa_base((va_arg (arg, unsigned int)), base);
 	while (type->str[i])
 		ft_toupper(type->str[i++]);
-	put_min_max_width(formatted, type);
-	hash(formatted, type);
 	if (formatted[(int)'X'])
 		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, ft_strlen(type->str)));
 }
