@@ -4,6 +4,8 @@
 void	D(int *formatted, va_list arg, t_type *type, int base)
 {
 	base = 10;
+	if (!formatted[(int)'l'])
+		formatted[(int)'l'] = 1;
 	if (check_length(formatted))
 		set_length(formatted, arg, type, base);
 	else
@@ -16,7 +18,8 @@ void	D(int *formatted, va_list arg, t_type *type, int base)
 void	O(int *formatted, va_list arg, t_type *type, int base)
 {
 	base = 8;
-
+	if (!formatted[(int)'l'])
+		formatted[(int)'l'] = 1;
 	if (check_length(formatted))
 		set_length(formatted, arg, type, base);
 	else
@@ -30,6 +33,8 @@ void	O(int *formatted, va_list arg, t_type *type, int base)
 void	U(int *formatted, va_list arg, t_type *type, int base)
 {
 	base = 10;
+	if (!formatted[(int)'l'])
+		formatted[(int)'l'] = 1;
 	if (check_length(formatted))
 		set_length(formatted, arg, type, base);
 	else

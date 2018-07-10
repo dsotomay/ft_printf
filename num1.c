@@ -15,17 +15,13 @@
 void	d(int *formatted, va_list arg, t_type *type, int base)
 {
 	base = 10;
-	if (!formatted[(int)'l'])
-	{
-		if (check_length(formatted))
-			set_length(formatted, arg, type, base);
-		else
-			type->str = ft_itoa_base((va_arg (arg, int)), base);
-		put_min_max_width(formatted, type);
-		if (formatted[(int)'d'] == 1)
-			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, ft_strlen(type->str)));
-	}
-	D(formatted, arg, type, base);
+	if (check_length(formatted))
+		set_length(formatted, arg, type, base);
+	else
+		type->str = ft_itoa_base((va_arg (arg, int)), base);
+	put_min_max_width(formatted, type);
+	if (formatted[(int)'d'] == 1)
+		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, ft_strlen(type->str)));
 }
 
 void	i(int *formatted, va_list arg, t_type *type, int base)
@@ -43,34 +39,26 @@ void	i(int *formatted, va_list arg, t_type *type, int base)
 void	o(int *formatted, va_list arg, t_type *type, int base)
 {
 	base = 8;
-	if (!formatted[(int)'l'])
-	{
-		if (check_length(formatted))
-			set_length(formatted, arg, type, base);
-		else
-			type->str = ft_utoa_base((va_arg (arg, unsigned int)), base);
-		put_min_max_width(formatted, type);
-		hash(formatted, type);
-		if (formatted[(int)'o'] == 1)
-			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, ft_strlen(type->str)));
-	}
-	O(formatted, arg, type, base);
+	if (check_length(formatted))
+		set_length(formatted, arg, type, base);
+	else
+		type->str = ft_utoa_base((va_arg (arg, unsigned int)), base);
+	put_min_max_width(formatted, type);
+	hash(formatted, type);
+	if (formatted[(int)'o'] == 1)
+		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, ft_strlen(type->str)));
 }
 
 void	u(int *formatted, va_list arg, t_type *type, int base)
 {
 	base = 10;
-	if (!formatted[(int)'l'])
-	{
-		if (check_length(formatted))
-			set_length(formatted, arg, type, base);
-		else
-			type->str = ft_utoa_base((va_arg (arg, unsigned int)), base);
-		put_min_max_width(formatted, type);
-		if (formatted[(int)'u'] == 1)
-			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, ft_strlen(type->str)));
-	}
-	U(formatted, arg, type, base);
+	if (check_length(formatted))
+		set_length(formatted, arg, type, base);
+	else
+		type->str = ft_utoa_base((va_arg (arg, unsigned int)), base);
+	put_min_max_width(formatted, type);
+	if (formatted[(int)'u'] == 1)
+		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, ft_strlen(type->str)));
 }
 
 void	x(int *formatted, va_list arg, t_type *type, int base)
