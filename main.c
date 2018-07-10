@@ -23,8 +23,8 @@
 
 int	main(int ac,  char **av)
 {
-	wchar_t wz [3] = L"@@";
-	wchar_t		c = L'\x82';
+	// wchar_t wz [3] = L"@@";
+	// wchar_t		c = L'\x82';
 
 	// int         r00 = 0;
     // fpos_t      pos;
@@ -67,15 +67,15 @@ int	main(int ac,  char **av)
 
 	if (ac)
 	{
-		ft_printf("%C\n", c);
-		ft_printf("%C\n", L'ø');
+		// ft_printf("%C\n", c);
+		// ft_printf("%C\n", L'ø');
 		
-		printf("%C\n", c);
-		printf("%C\n", L'ø');
+		// printf("%C\n", c);
+		// printf("%C\n", L'ø');
 
-		ft_printf("mines %ls", wz);
-		puts("theirs\n"); 
-		printf("%ls", wz); 
+		// ft_printf("mines %ls", wz);
+		// puts("theirs\n"); 
+		// printf("%ls", wz); 
 
 		// ft_printf("%d", 42);
 		// ft_printf("Kashim a %d histoires à raconter", 1001);

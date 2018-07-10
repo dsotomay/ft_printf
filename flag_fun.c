@@ -16,9 +16,9 @@ void		hash(int *formatted, t_type *type)
 {
 	if ((formatted[(int)'o'] || formatted[(int)'O']) && *type->str != '0')
 		type->str = "0";
-	if (formatted[(int)'x'])
+	if (formatted[(int)'X'])
 		type->str = "0X";
-	else if (formatted[(int)'X'])
+	else if (formatted[(int)'x'])
 		type->str = "0x";
 	type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str,ft_strlen(type->str)));
 }
