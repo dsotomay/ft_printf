@@ -8,7 +8,7 @@ LIBFT = libft/*.o
 # INCLUDES = -I libft/ 
 # CONFIG4 = gcc $(FLAGS) $(SRC) $(CONFIG2) $(LIBFT) -o $(NAME)
 SRC = str_char_pointer.c dispatch_table.c num1.c helper.c length.c \
-ft_printf.c dispatch.c flags.c length2.c flag_fun.c
+ft_printf.c dispatch.c flags.c length2.c flag_fun.c num2.c
 OBJ = $(patsubst %.c, %.o, $(SRC))
 
 all: $(LIBFT) $(NAME)
@@ -16,7 +16,7 @@ all: $(LIBFT) $(NAME)
 $(LIBFT):
 	make -C libft/
 
-$(NAME):
+$(NAME): $(LIBFT) $(SRC)
 	$(CONFIG)
 	$(CONFIG2)
 	$(CONFIG3)
