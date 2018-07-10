@@ -23,15 +23,14 @@ void		hash(int *formatted, t_type *type)
 		}
 		if (formatted[(int)'X'])
 		{
-			type->str = "0X";
+			*(type->buff + type->bytes) = "0X";
 			type->bytes += 2;
 		}
 		else if (formatted[(int)'x'])
 		{
-			type->str = "0x";
+			*(type->buff + type->bytes) = "0x";
 			type->bytes += 2;
 		}
-		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str,ft_strlen(type->str)));
 	}
 }
 
