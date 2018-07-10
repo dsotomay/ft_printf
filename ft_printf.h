@@ -57,14 +57,14 @@ void		s(int *formatted, va_list arg, t_type *type, int base);
 void		S(int *formatted, va_list arg, t_type *type, int base);
 void		p(int *formatted, va_list arg, t_type *type, int base);
 void		d(int *formatted, va_list arg, t_type *type, int base);
-// void		D(int *formatted, va_list arg, t_type *type, int base);
+void		D(int *formatted, va_list arg, t_type *type, int base);
 void		i(int *formatted, va_list arg, t_type *type, int base);
 void		o(int *formatted, va_list arg, t_type *type, int base);
-// void		O(int *formatted, va_list arg, t_type *type, int base);
+void		O(int *formatted, va_list arg, t_type *type, int base);
 void		u(int *formatted, va_list arg, t_type *type, int base);
-// void		U(int *formatted, va_list arg, t_type *type, int base);
+void		U(int *formatted, va_list arg, t_type *type, int base);
 void		x(int *formatted, va_list arg, t_type *type, int base);
-// void		X(int *formatted, va_list arg, t_type *type, int base);
+void		X(int *formatted, va_list arg, t_type *type, int base);
 void		c(int *formatted, va_list arg, t_type *type, int base);
 void		C(int *formatted, va_list arg, t_type *type, int base);
 	
@@ -83,7 +83,7 @@ void		z(int *formatted, va_list arg, t_type *type, int base);
 **	flags
 */
 
-void		hash(int *formatted, va_list arg, t_type *type, int base);
+void		hash(int *formatted, t_type *type);
 void		minus_plus(int *formatted, t_type *type);
 
 #endif
