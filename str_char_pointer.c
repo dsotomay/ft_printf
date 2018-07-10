@@ -32,16 +32,15 @@ void	s(int *formatted, va_list arg, t_type *type, int base)
 
 void	S(int *formatted, va_list arg, t_type *type, int base)
 {
-	int i;
 	wchar_t *str;
 
-	i = 0;
 	(void)base;
 	str = va_arg (arg, wchar_t*);
 	if (formatted[(int)'S'] == 1)
-		while (str[i])
-			write(1, &str[i++], 1);
-	type->bytes += i;
+	{
+		put_min_max_width(formatted, type);
+		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, !type->precision ? (int64_t)ft_strlen(type->str) : type->precision));
+	}
 }
 
 void	p(int *formatted, va_list arg, t_type *type, int base)
