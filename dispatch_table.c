@@ -40,14 +40,14 @@ FUNC			spec(int num)
 		func[(int)'S'] = S;
 		func[(int)'p'] = p;
 		func[(int)'d'] = d;
-		// func[(int)'D'] = D;
+		func[(int)'D'] = D;
 		func[(int)'i'] = i;
 		func[(int)'o'] = o;
-		// func[(int)'O'] = O;
+		func[(int)'O'] = O;
 		func[(int)'u'] = u;
-		// func[(int)'U'] = U;
+		func[(int)'U'] = U;
 		func[(int)'x'] = x;
-		// func[(int)'X'] = X;
+		func[(int)'X'] = X;
 		func[(int)'c'] = c;
 		func[(int)'C'] = C;
 		return (func[num]);
