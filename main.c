@@ -67,6 +67,7 @@ int	main(int ac,  char **av)
 
 	if (ac)
 	{
+		ft_printf("%#X\n", 42);
 		// ft_printf("%C\n", c);
 		// ft_printf("%C\n", L'ø');
 		
