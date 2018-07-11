@@ -39,12 +39,12 @@ void	i(int *formatted, va_list arg, t_type *type, int base)
 void	o(int *formatted, va_list arg, t_type *type, int base)
 {
 	base = 8;
-	put_min_max_width(formatted, type);
-	hash(formatted, type);
 	if (check_length(formatted))
 		set_length(formatted, arg, type, base);
 	else
 		type->str = ft_utoa_base((va_arg (arg, unsigned int)), base);
+	put_min_max_width(formatted, type);
+	hash(formatted, type);
 	if (formatted[(int)'o'] == 1)
 		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, ft_strlen(type->str)));
 }
