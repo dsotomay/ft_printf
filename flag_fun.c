@@ -42,7 +42,7 @@ void	width(int *formatted, t_type *type, int i)
 			*(type->buff + type->bytes + i++) = '0';
 		type->width = 0;
 	}
-	if (i == 1 || ft_strrchr(type->buff, '+'))
+	if (ft_strrchr(type->buff, '+') || (type->buff[type->bytes] != ' ' && i == 1))
 		i -= 1;
 	type->bytes += i;
 }
