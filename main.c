@@ -67,7 +67,29 @@ int	main(int ac,  char **av)
 
 	if (ac)
 	{
-		ft_printf("%#X\n", 42);
+		
+		// printf("%i\n", ft_printf("%%+i 42 == %+i\n", 42));
+		// printf("%i\n", ft_printf("%%+d 42 == %+d\n", INT_MAX));
+		// printf("%i\n", ft_printf("%%+i -42 == %+i\n", -42));
+		// printf("%i\n", ft_printf("%%+04d 42 == %0+04d\n", 42));
+		
+		// printf("%i\n", printf("%%+i 42 == %+i\n", 42));
+		// printf("%i\n", printf("%%+d 42 == %+d\n", INT_MAX));
+		// printf("%i\n", printf("%%+i -42 == %+i\n", -42));
+		// printf("%i\n", printf("%%+04d 42 == %0+04d\n", 42));
+
+		printf("%i\n", ft_printf("%%-i -42 == %-i\n", -42));
+		printf("%i\n", ft_printf("%%-4d 42 == |%-4d|\n", 42));
+		printf("%i\n", ft_printf("%%-5d -42 == |%-5d|\n", -42));
+		printf("%i\n", ft_printf("|%3i|%-3i|\n", 42, 42));
+		printf("%i\n", ft_printf("%%-4i 42 == |%-4i|\n", 42));
+		
+		printf("%i\n", ft_printf("%%-i -42 == %-i\n", -42));
+		printf("%i\n", ft_printf("%%-4d 42 == |%-4d|\n", 42));
+		printf("%i\n", ft_printf("%%-5d -42 == |%-5d|\n", -42));
+		printf("%i\n", ft_printf("|%3i|%-3i|\n", 42, 42));
+		printf("%i\n", ft_printf("%%-4i 42 == |%-4i|\n", 42));
+		
 		// ft_printf("%C\n", c);
 		// ft_printf("%C\n", L'ø');
 		

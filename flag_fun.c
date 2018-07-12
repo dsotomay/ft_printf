@@ -29,7 +29,7 @@ void	width(int *formatted, t_type *type, int i)
 {
 	if (formatted[(int)' '] && type->str[0] != '-')
 		*(type->buff + type->bytes + i++) = ' ';
-	if (!formatted[(int)'-'] && type->width)
+	if (!formatted[(int)'-'] && type->width && !formatted[(int)'0'])
 	{
 		while (i < ft_abs(type->width, type->precision))
 			*(type->buff + type->bytes + i++) = ' ';
@@ -42,6 +42,8 @@ void	width(int *formatted, t_type *type, int i)
 			*(type->buff + type->bytes + i++) = '0';
 		type->width = 0;
 	}
+	if (i == 1 || ft_strrchr(type->buff, '+'))
+		i -= 1;
 	type->bytes += i;
 }
 
