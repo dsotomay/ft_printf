@@ -36,7 +36,8 @@ void	S(int *formatted, va_list arg, t_type *type, int base)
 	wchar_t *str;
 
 	(void)base;
-	str = va_arg (arg, wchar_t*);
+	if (!(str = va_arg (arg, wchar_t*)))
+		return ;
 	if (formatted[(int)'S'] || (formatted[(int)'s'] && formatted[(int)'l']))
 	{
 		put_min_max_width(formatted, type);
