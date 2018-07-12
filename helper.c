@@ -15,7 +15,9 @@
 
 void	resize(t_type *type)
 {
-	if (type->bytes + 2 == MAX_BUFF)
+	if (!type->str)
+		return ;
+	if (type->bytes + 2 == MAX_BUFF || type->bytes + ft_strlen(type->str) >= MAX_BUFF)
 	{
 		type->count++;
 		type->buff = (char*)ft_realloc(type->buff, MAX_BUFF + 2);
