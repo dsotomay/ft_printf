@@ -45,9 +45,9 @@ void	put_min_max_width(int *formatted, t_type *type)
 		type->precision = 0;
 	if (type->width < tmp || type->width < type->precision)
 		type->width = 0;
-	else if (type->width > tmp + type->precision && !formatted[(int)'s'])
+	else if (type->width > tmp + type->precision && (!formatted[(int)'s'] || !formatted[(int)'S']))
 		type->width -= tmp + type->precision;
-	else if (type->width > tmp && formatted[(int)'s'] && type->precision)
+	else if (type->width > tmp && (formatted[(int)'s'] || formatted[(int)'S']) && type->precision)
 		type->width -= type->precision;
 	if (type->str[0] == '-' && type->width)
 		i = 1;
@@ -57,7 +57,8 @@ void	put_min_max_width(int *formatted, t_type *type)
 	if (type->precision > tmp && !formatted[(int)'s'])
 		while (i + tmp < type->precision)
 			*(type->buff + type->bytes + i++) = '0';
-	type->precision = 0;
+	if (!formatted[(int)'s'] && !formatted[(int)'S'])
+		type->precision = 0;
 	type->bytes += i;
 }
 
