@@ -56,7 +56,6 @@ void	minus_plus(int *formatted, t_type *type)
 		}
 		else if (formatted[43] && (formatted[(int)'d'] || formatted[(int)'i']))
 			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "+", 1));
-		formatted[(int)'-'] = 0;
 		formatted[(int)'+'] = 0;
 	}
 }
