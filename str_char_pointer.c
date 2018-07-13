@@ -17,7 +17,11 @@ void	s(int *formatted, va_list arg, t_type *type, int base)
 	if (formatted[(int) 'l'] == 0)
 	{
 		(void)base;
-		type->str = va_arg (arg, char*);
+		if (!(type->str = va_arg (arg, char*)))
+		{
+			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "(null)", 6));
+			return ;
+		}
 		while (type->bytes + ft_strlen(type->str) >= MAX_BUFF)
 			resize(type);
 		if (formatted[(int)'s'] == 1)
