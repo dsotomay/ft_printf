@@ -6,7 +6,7 @@
 /*   By: dysotoma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/24 19:17:04 by dysotoma          #+#    #+#             */
-/*   Updated: 2018/06/24 19:17:06 by dysotoma         ###   ########.fr       */
+/*   Updated: 2018/07/13 23:23:33 by dysotoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,8 @@ void			parse(char *format, va_list arg, int *i, t_type *type)
 	}
 	if (format[*i])
 	{
-		resize(type);
+		if (type->bytes + 2 == MAX_BUFF)
+			resize(type);
 		if (format[++*i] == '%')
 		{
 			ft_strncpy(type->buff + type->bytes, "%", 1);

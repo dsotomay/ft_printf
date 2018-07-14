@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striter.c                                       :+:      :+:    :+:   */
+/*   ft_wstrlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dysotoma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/02 14:02:40 by dysotoma          #+#    #+#             */
-/*   Updated: 2018/07/13 23:32:53 by dysotoma         ###   ########.fr       */
+/*   Created: 2018/07/13 22:36:21 by dysotoma          #+#    #+#             */
+/*   Updated: 2018/07/13 23:33:19 by dysotoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striter(char *s, void (*f)(char *))
+size_t	ft_wstrlen(const wchar_t *str)
 {
-	while (*s)
-		f(s++);
+	int len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: dysotoma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/23 14:54:51 by dysotoma          #+#    #+#             */
-/*   Updated: 2018/05/23 14:54:54 by dysotoma         ###   ########.fr       */
+/*   Updated: 2018/07/13 23:23:40 by dysotoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int ft_printf(char *format, ...)
 	type.count = 1;
 	type.bytes = 0;
 	type.width = 0;
+	type.str = NULL;
 	type.precision = 0;
 	type.buff = ft_strnew(1023);
 	while (format[i] && type.bytes != (size_t)-1)

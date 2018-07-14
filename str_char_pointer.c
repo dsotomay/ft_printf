@@ -6,7 +6,7 @@
 /*   By: dysotoma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/24 19:15:06 by dysotoma          #+#    #+#             */
-/*   Updated: 2018/06/24 19:15:11 by dysotoma         ###   ########.fr       */
+/*   Updated: 2018/07/13 23:42:25 by dysotoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,14 @@ void	S(int *formatted, va_list arg, t_type *type, int base)
 
 	(void)base;
 	if (!(str = va_arg (arg, wchar_t*)))
+	{
+		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "(null)", 6));
 		return ;
+	}
 	if (formatted[(int)'S'] || (formatted[(int)'s'] && formatted[(int)'l']))
 	{
 		put_min_max_width(formatted, type);
-		type->bytes += ft_strlen(ft_ws_to_strncpy(type->buff + type->bytes, str, !type->precision ? (int64_t)ft_strlen(type->str) : type->precision));
+		type->bytes += ft_strlen(ft_ws_to_strncpy(type->buff + type->bytes, str, !type->precision ? (int64_t)ft_wstrlen(str) : type->precision));
 	}
 }
 

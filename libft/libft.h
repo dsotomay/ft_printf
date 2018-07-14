@@ -13,7 +13,7 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdint.h> //remove me
+// # include <stdint.h> //remove me
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -107,6 +107,7 @@ char			*ft_strrchr(const char *str, int c);
 char			*ft_strchr(const char *str, int c);
 char			*ft_strdup(const char *src);
 size_t			ft_strlen(const char *str);
+size_t			ft_wstrlen(const wchar_t *str);
 size_t			ft_strlcat(char *dest, const char *src, size_t dstsize);
 char			*ft_strcat(char *dest, const char *src);
 

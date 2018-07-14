@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dysotoma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/24 19:14:44 by dysotoma          #+#    #+#             */
-/*   Updated: 2018/06/24 19:14:52 by dysotoma         ###   ########.fr       */
+/*   Created: 2018/07/13 22:56:59 by dysotoma          #+#    #+#             */
+/*   Updated: 2018/07/13 23:23:41 by dysotoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	resize(t_type *type)
 {
 	if (!type->str)
 		return ;
-	if (type->bytes + 2 == MAX_BUFF || type->bytes + ft_strlen(type->str) >= MAX_BUFF)
+	if (type->bytes + 2 == MAX_BUFF || type->bytes + ft_strlen(type->str)
+			>= MAX_BUFF)
 	{
 		type->count++;
 		type->buff = (char*)ft_realloc(type->buff, MAX_BUFF + 2);
@@ -36,22 +37,27 @@ void	set_width(char *format, int *i, t_type *type)
 
 int		check_length(int *formatted)
 {
-	return (formatted[104] || formatted[106] || formatted[108] || formatted[122]);
+	return (formatted[104] || formatted[106] || formatted[108] ||
+			formatted[122]);
 }
 
 void	put_min_max_width(int *formatted, t_type *type)
 {
 	INIT;
-	tmp = ft_strlen(type->str);
+	tmp = 0;
+	if (type->str)
+		tmp = ft_strlen(type->str);
 	if (type->precision == tmp)
 		type->precision = 0;
 	if (type->width < tmp || type->width < type->precision)
 		type->width = 0;
-	else if (type->width > tmp + type->precision && (!formatted[(int)'s'] || !formatted[(int)'S']))
+	else if (type->width > tmp + type->precision && (!formatted[(int)'s'] ||
+				!formatted[(int)'S']))
 		type->width -= tmp + type->precision;
-	else if (type->width > tmp && (formatted[(int)'s'] || formatted[(int)'S']) && type->precision)
+	else if (type->width > tmp && (formatted[(int)'s'] || formatted[(int)'S'])
+			&& type->precision)
 		type->width -= type->precision;
-	if (type->str[0] == '-' && type->width)
+	if (tmp > 0 && type->str[0] == '-' && type->width)
 		i = 1;
 	width(formatted, type, i);
 	minus_plus(formatted, type);
@@ -65,7 +71,7 @@ void	put_min_max_width(int *formatted, t_type *type)
 }
 
 void	reset(int *formatted)
-{ 
+{
 	formatted[(int)'s'] = 0;
 	formatted[(int)'S'] = 0;
 	formatted[(int)'p'] = 0;

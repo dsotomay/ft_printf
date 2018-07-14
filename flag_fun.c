@@ -6,7 +6,7 @@
 /*   By: dysotoma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/27 19:26:46 by dysotoma          #+#    #+#             */
-/*   Updated: 2018/06/27 19:26:49 by dysotoma         ###   ########.fr       */
+/*   Updated: 2018/07/13 23:23:38 by dysotoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void		hash(int *formatted, t_type *type)
 
 void	width(int *formatted, t_type *type, int i)
 {
-	if (formatted[(int)' '] && type->str[0] != '-')
+	if (formatted[(int)' '] && type->str && type->str[0] != '-')
 		*(type->buff + type->bytes + i++) = ' ';
 	if (!formatted[(int)'-'] && formatted[(int)'0'] && (!type->precision && !formatted[(int)'.']))
 	{
@@ -49,9 +49,9 @@ void	width(int *formatted, t_type *type, int i)
 
 void	minus_plus(int *formatted, t_type *type)
 {
-	if (!formatted[(int)'s'])
+	if (!formatted[(int)'s'] && !formatted[(int)'S'])
 	{
-		if (type->str[0] == '-')
+		if (type->str && type->str[0] == '-')
 		{
 			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "-", 1));
 			type->str++;
