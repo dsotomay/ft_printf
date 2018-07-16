@@ -91,10 +91,7 @@ void			handle(char *format, va_list arg, int *i, t_type *type)
 			*i += 1;
 		}
 		else
-		{
-			// type->bytes = -1;
 			return ;
-		}
 	}
 	set_specifier(formatted, arg, type);
 	while (type->width-- && formatted[(int)'-'])

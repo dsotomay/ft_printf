@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#define INIT int i = 0; int tmp
+#define INIT int i = 0; int tmp = 0
 
 void	resize(t_type *type)
 {
@@ -44,7 +44,6 @@ int		check_length(int *formatted)
 void	put_min_max_width(int *formatted, t_type *type)
 {
 	INIT;
-	tmp = 0;
 	if (type->str)
 		tmp = ft_strlen(type->str);
 	if (type->precision == tmp)
@@ -95,4 +94,5 @@ void	reset(int *formatted)
 	formatted[(int)'-'] = 0;
 	formatted[(int)'+'] = 0;
 	formatted[(int)' '] = 0;
+	formatted[(int)'.'] = 0;
 }

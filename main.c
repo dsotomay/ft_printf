@@ -69,16 +69,77 @@ int	main(int ac,  char **av)
 
 	if (ac)
 	{
-		printf("%i\n", ft_printf("%%04i 42 == |%04i|\n", 42));
-		printf("%i\n", ft_printf("%%05i 42 == |%05i|\n", 42));
-		printf("%i\n", ft_printf("%%0i 42 == |%0i|\n", 42));
-		printf("%i\n", ft_printf("%%0d 0000042 == |%0d|\n", 0000042));
+		// printf("%i\n", ft_printf("%%04i 42 == |%04i|\n", 42));
+		// printf("%i\n", ft_printf("%%05i 42 == |%05i|\n", 42));
+		// printf("%i\n", ft_printf("%%0i 42 == |%0i|\n", 42));
+		// printf("%i\n", ft_printf("%%0d 0000042 == |%0d|\n", 0000042));
+		// printf("%i\n", ft_printf("%%hhd 0 == |%hhd|\n", (char)'\0'));
 
-		printf("%i\n", printf("%%04i 42 == |%04i|\n", 42));
-		printf("%i\n", printf("%%05i 42 == |%05i|\n", 42));
-		printf("%i\n", printf("%%0i 42 == |%0i|\n", 42));
-		printf("%i\n", printf("%%0d 0000042 == |%0d|\n", 0000042));
+		// printf("%i\n", printf("%%04i 42 == |%04i|\n", 42));
+		// printf("%i\n", printf("%%05i 42 == |%05i|\n", 42));
+		// printf("%i\n", printf("%%0i 42 == |%0i|\n", 42));
+		// printf("%i\n", printf("%%0d 0000042 == |%0d|\n", 0000042));
+		// printf("%i\n", printf("%%hhd 0 == |%hhd|\n", (char)'\0'));
+
+		// ft_printf("%c", 42);
+        // ft_printf("Kashim a %c histoires à raconter", 1001);
+        // ft_printf("Il fait au moins %c\n", -8000);
+        ft_printf("my%c", -0);
+        ft_printf("my%c", 0);
+        ft_printf("my%c\n", INT_MAX);
+        // ft_printf("%c\n", 'c');
+        // ft_printf("%c\n", '\n');
+        // ft_printf("%c", 'l');
+        // ft_printf("%c", 'y');
+        // ft_printf("%c", ' ');
+        // ft_printf("%c", 'e');
+        // ft_printf("%c", 's');
+        // ft_printf("%c", 't');
+        // ft_printf("%c", ' ');
+        // ft_printf("%c", 'f');
+        // ft_printf("%c", 'a');
+        // ft_printf("%c", 'n');
+        // ft_printf("%c", 't');
+        // ft_printf("%c", 'a');
+        // ft_printf("%c", 's');
+        // ft_printf("%c", 't');
+        // ft_printf("%c", 'i');
+        // ft_printf("%c", 'q');
+        // ft_printf("%c", 'u');
+        // ft_printf("%c", 'e');
+        // ft_printf("%c\n", '!');
+        // ft_printf("%c\n", '\r');
+        // ft_printf("%c\n", '\t');
 		
+		// printf("%c", 42);
+        // printf("Kashim a %c histoires à raconter", 1001);
+        // printf("Il fait au moins %c\n", -8000);
+        printf("hi%c", -0);
+        printf("hi%c", 0);
+        printf("hi%c\n", INT_MAX);
+        // printf("%c\n", 'c');
+        // printf("%c\n", '\n');
+        // printf("%c", 'l');
+        // printf("%c", 'y');
+        // printf("%c", ' ');
+        // printf("%c", 'e');
+        // printf("%c", 's');
+        // printf("%c", 't');
+        // printf("%c", ' ');
+        // printf("%c", 'f');
+        // printf("%c", 'a');
+        // printf("%c", 'n');
+        // printf("%c", 't');
+        // printf("%c", 'a');
+        // printf("%c", 's');
+        // printf("%c", 't');
+        // printf("%c", 'i');
+        // printf("%c", 'q');
+        // printf("%c", 'u');
+        // printf("%c", 'e');
+        // printf("%c\n", '!');
+        // printf("%c\n", '\r');
+        // printf("%c\n", '\t');
 		// ft_printf("%s", "pouet");
 		// ft_printf(" pouet %s !!\n", "camembert");
 		// ft_printf("%s !\n", "Ceci n'est pas un \0 exercice !");
@@ -120,9 +181,9 @@ int	main(int ac,  char **av)
 		// printf("%C\n", c);
 		// printf("%C\n", L'ø');
 
-		ft_printf("mine %ls", wz);
-		puts("theirs\n"); 
-		printf("%ls", wz); 
+		// ft_printf("mine %ls", wz);
+		// puts("theirs\n"); 
+		// printf("%ls", wz); 
 
 		// ft_printf("%d", 42);
 		// ft_printf("Kashim a %d histoires à raconter", 1001);

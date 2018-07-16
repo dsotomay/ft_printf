@@ -14,25 +14,46 @@
 
 void	hh(int *formatted, va_list arg, t_type *type, int base)
 {
+	char	c;
+
 	(void)base;
 	if ((formatted[(int)'d'] || formatted[(int)'i']) == 1)
-		*type->str = (char)(va_arg (arg, int));
+		{
+			c = (char)va_arg (arg, int);
+			if (type->bytes + 1 >= MAX_BUFF)
+				resize(type);
+			if (c == 0)
+				*(type->buff + type->bytes) = '0';
+			else
+				*(type->buff + type->bytes) = c;
+			type->bytes += 1;
+			return ;
+		}
 	else
 		type->str = ft_utoa_base(va_arg (arg, uint64_t), base);
 }
 
 void	h(int *formatted, va_list arg, t_type *type, int base)
 {
-	// static char arr[1];
+	short	c;
 
-	// type->str = arr;
 	if (formatted[(int)'h'] == 2)
 		hh(formatted, arg, type, base);
 	else
 	{
 		(void)base;
 		if ((formatted[(int)'d'] || formatted[(int)'i']) == 1)
-			type->str[0] = (short)va_arg (arg, int);
+		{
+			c = (short)va_arg (arg, int);
+			if (type->bytes + 1 >= MAX_BUFF)
+				resize(type);
+			if (c == 0)
+				*(type->buff + type->bytes) = '0';
+			else
+				*(type->buff + type->bytes) = c;
+			type->bytes += 1;
+			return ;
+		}
 		else
 			type->str = ft_utoa_base(va_arg (arg, uint64_t), base);
 	}
@@ -41,7 +62,6 @@ void	h(int *formatted, va_list arg, t_type *type, int base)
 
 void	ll(int *formatted, va_list arg, t_type *type, int base)
 {
-	// type->str = ft_strnew(1);
 	if (formatted[(int)'d'] || formatted[(int)'i'])
 		type->str = ft_itoa_base(va_arg (arg, long long), base);
 	else
@@ -55,7 +75,6 @@ void	l(int *formatted, va_list arg, t_type *type, int base)
 		ll(formatted, arg, type, base);
 	else
 	{
-		// type->str = ft_strnew(1);
 		if ((formatted[(int)'d'] || formatted[(int)'i']))
 			type->str = ft_itoa_base(va_arg (arg, long), base);
 		else
@@ -65,7 +84,6 @@ void	l(int *formatted, va_list arg, t_type *type, int base)
 
 void	j(int *formatted, va_list arg, t_type *type, int base)
 {
-	// type->str = ft_strnew(1);
 	if ((formatted[(int)'d'] || formatted[(int)'i']) == 1)
 		type->str = ft_itoa_base(va_arg (arg, intmax_t), base);
 	else

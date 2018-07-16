@@ -22,7 +22,7 @@ void	s(int *formatted, va_list arg, t_type *type, int base)
 			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "(null)", 6));
 			return ;
 		}
-		while (type->bytes + ft_strlen(type->str) >= MAX_BUFF)
+		while (type->str && type->bytes + ft_strlen(type->str) >= MAX_BUFF)
 			resize(type);
 		if (formatted[(int)'s'] == 1)
 		{
@@ -44,6 +44,8 @@ void	S(int *formatted, va_list arg, t_type *type, int base)
 		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "(null)", 6));
 		return ;
 	}
+	while (str && type->bytes + ft_wstrlen(str) >= MAX_BUFF)
+		resize(type);
 	if (formatted[(int)'S'] || (formatted[(int)'s'] && formatted[(int)'l']))
 	{
 		put_min_max_width(formatted, type);
@@ -57,6 +59,8 @@ void	p(int *formatted, va_list arg, t_type *type, int base)
 
 	(void)base;
 	ptr = ft_itoa_base((int64_t)va_arg (arg, void*), 16);
+	while (type->bytes + ft_strlen(ptr) >= MAX_BUFF)
+			resize(type);
 	if (formatted[(int)'p'] == 1)
 	{
 		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "0x", 2));
@@ -77,7 +81,7 @@ void	c(int *formatted, va_list arg, t_type *type, int base)
 		c = (char)va_arg (arg, int);
 		if (type->bytes + 1 >= MAX_BUFF)
 			resize(type);
-		if (formatted[(int)'c'] == 1)
+		if (formatted[(int)'c'])
 		{
 			*(type->buff + type->bytes) = c;
 			type->bytes += 1;
@@ -93,6 +97,8 @@ void	C(int *formatted, va_list arg, t_type *type, int base)
 
 	(void)base;
 	C = (wchar_t)va_arg (arg, int);
+	if (type->bytes + 1 >= MAX_BUFF)
+		resize(type);
 	if (formatted[(int)'C'] == 1)
 	{
 		*(type->buff + type->bytes) = C;

@@ -16,6 +16,8 @@ void		hash(int *formatted, t_type *type)
 {
 	if (formatted[(int)'#'])
 	{
+		while (type->bytes + 2 >= MAX_BUFF)
+			resize(type);
 		if ((formatted[(int)'o'] || formatted[(int)'O']) && *type->str != '0')
 			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "0", 1));
 		if (formatted[(int)'X'])
