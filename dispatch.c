@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
-#include <stdio.h> //remove me
 
 void	set_specifier(int *formatted, va_list arg, t_type *type)
 {
@@ -28,7 +26,7 @@ void	set_specifier(int *formatted, va_list arg, t_type *type)
 			i++;
 		if (i == 90)
 			i = 97;
-		if(formatted[i])
+		if (formatted[i])
 		{
 			dispatch.func = spec(i);
 			(dispatch.func)(formatted, arg, type, base);
@@ -58,21 +56,9 @@ void	set_length(int *formatted, va_list arg, t_type *type, int base)
 		else
 			i++;
 	}
-	// set_flag(formatted, arg, type);
 }
 
-// void	set_flag(int *formatted, va_list arg, t_type *type)
-// {
-// 	int i;
-
-// 	i = 32;
-// 	while (formatted[i] >= 32 && formatted[i] <= 48)
-// 	{
-
-// 	}
-// }
-
-void			handle(char *format, va_list arg, int *i, t_type *type)
+void	handle(char *format, va_list arg, int *i, t_type *type)
 {
 	static	int	formatted[128];
 	int			end;
@@ -99,13 +85,13 @@ void			handle(char *format, va_list arg, int *i, t_type *type)
 	reset(formatted);
 }
 
-void			parse(char *format, va_list arg, int *i, t_type *type)
+void	parse(char *format, va_list arg, int *i, t_type *type)
 {
 	while (format[*i] != '%' && format[*i])
 	{
 		resize(type);
-		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, format + *i, 1));
-		// printf("%zu\n", type->bytes);
+		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, format +
+		*i, 1));
 		(*i)++;
 	}
 	if (format[*i])
@@ -115,12 +101,10 @@ void			parse(char *format, va_list arg, int *i, t_type *type)
 		if (format[++*i] == '%')
 		{
 			ft_strncpy(type->buff + type->bytes, "%", 1);
-			type->bytes++; 
+			type->bytes++;
 			(*i)++;
 		}
 		else
 			handle(format, arg, i, type);
 	}
-	// else if (format[*i + 1] == '\0' && format[*i] == '%')
-	// 	type->bytes = -1;
 }

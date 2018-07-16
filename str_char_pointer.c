@@ -14,12 +14,13 @@
 
 void	s(int *formatted, va_list arg, t_type *type, int base)
 {
-	if (formatted[(int) 'l'] == 0)
+	if (formatted[(int)'l'] == 0)
 	{
 		(void)base;
-		if (!(type->str = va_arg (arg, char*)))
+		if (!(type->str = va_arg(arg, char*)))
 		{
-			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "(null)", 6));
+			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes,
+			"(null)", 6));
 			return ;
 		}
 		while (type->str && type->bytes + ft_strlen(type->str) >= MAX_BUFF)
@@ -27,21 +28,24 @@ void	s(int *formatted, va_list arg, t_type *type, int base)
 		if (formatted[(int)'s'] == 1)
 		{
 			put_min_max_width(formatted, type);
-			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, type->str, !type->precision ? (int64_t)ft_strlen(type->str) : type->precision));
+			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes,
+			type->str, !type->precision ? (int64_t)ft_strlen(type->str) :
+			type->precision));
 		}
 	}
-	else if (formatted[(int) 'l'] == 1)
-		S(formatted, arg, type, base);
+	else if (formatted[(int)'l'] == 1)
+		up_s(formatted, arg, type, base);
 }
 
-void	S(int *formatted, va_list arg, t_type *type, int base)
+void	up_s(int *formatted, va_list arg, t_type *type, int base)
 {
 	wchar_t *str;
 
 	(void)base;
-	if (!(str = va_arg (arg, wchar_t*)))
+	if (!(str = va_arg(arg, wchar_t*)))
 	{
-		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "(null)", 6));
+		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "(null)",
+		6));
 		return ;
 	}
 	while (str && type->bytes + ft_wstrlen(str) >= MAX_BUFF)
@@ -49,7 +53,8 @@ void	S(int *formatted, va_list arg, t_type *type, int base)
 	if (formatted[(int)'S'] || (formatted[(int)'s'] && formatted[(int)'l']))
 	{
 		put_min_max_width(formatted, type);
-		type->bytes += ft_strlen(ft_ws_to_strncpy(type->buff + type->bytes, str, !type->precision ? (int64_t)ft_wstrlen(str) : type->precision));
+		type->bytes += ft_strlen(ft_ws_to_strncpy(type->buff + type->bytes, str,
+		!type->precision ? (int64_t)ft_wstrlen(str) : type->precision));
 	}
 }
 
@@ -58,16 +63,18 @@ void	p(int *formatted, va_list arg, t_type *type, int base)
 	char	*ptr;
 
 	(void)base;
-	ptr = ft_itoa_base((int64_t)va_arg (arg, void*), 16);
+	ptr = ft_itoa_base((int64_t)va_arg(arg, void*), 16);
 	while (type->bytes + ft_strlen(ptr) >= MAX_BUFF)
-			resize(type);
+		resize(type);
 	if (formatted[(int)'p'] == 1)
 	{
 		type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "0x", 2));
 		if (!*ptr)
-			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "0", 1));
+			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, "0",
+			1));
 		else
-			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, ptr, ft_strlen(ptr)));
+			type->bytes += ft_strlen(ft_strncpy(type->buff + type->bytes, ptr,
+			ft_strlen(ptr)));
 	}
 }
 
@@ -75,10 +82,10 @@ void	c(int *formatted, va_list arg, t_type *type, int base)
 {
 	char c;
 
-	if (formatted[(int) 'l'] == 0)
+	if (formatted[(int)'l'] == 0)
 	{
 		(void)base;
-		c = (char)va_arg (arg, int);
+		c = (char)va_arg(arg, int);
 		if (type->bytes + 1 >= MAX_BUFF)
 			resize(type);
 		if (formatted[(int)'c'])
@@ -87,21 +94,21 @@ void	c(int *formatted, va_list arg, t_type *type, int base)
 			type->bytes += 1;
 		}
 	}
-	else if (formatted[(int) 'l'] == 1)
-		C(formatted, arg, type, base);
+	else if (formatted[(int)'l'] == 1)
+		up_c(formatted, arg, type, base);
 }
 
-void	C(int *formatted, va_list arg, t_type *type, int base)
+void	up_c(int *formatted, va_list arg, t_type *type, int base)
 {
-	wchar_t C;
+	wchar_t c;
 
 	(void)base;
-	C = (wchar_t)va_arg (arg, int);
+	c = (wchar_t)va_arg(arg, int);
 	if (type->bytes + 1 >= MAX_BUFF)
 		resize(type);
-	if (formatted[(int)'C'] == 1)
+	if (formatted[(int)'C'])
 	{
-		*(type->buff + type->bytes) = C;
+		*(type->buff + type->bytes) = c;
 		type->bytes += 1;
 	}
 }

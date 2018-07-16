@@ -29,4 +29,3 @@ char	*ft_ws_to_strncpy(char *dest, const wchar_t *src, size_t n)
 	}
 	return (dest);
 }
-

@@ -13,7 +13,6 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-// # include <stdint.h> //remove me
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -54,7 +53,7 @@ void			ft_memdel(void **ap);
 void			*ft_realloc(void *ptr, size_t size);
 
 /*
-**
+** numbers
 */
 
 int				ft_isalnum(int c);
@@ -66,7 +65,7 @@ int				ft_toupper(int c);
 int				ft_tolower(int c);
 
 /*
-**
+** write
 */
 
 void			ft_putchar(char c);
@@ -79,7 +78,7 @@ void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 
 /*
-**
+** string
 */
 
 char			*ft_strnew(size_t size);
@@ -112,7 +111,7 @@ size_t			ft_strlcat(char *dest, const char *src, size_t dstsize);
 char			*ft_strcat(char *dest, const char *src);
 
 /*
-**
+** linked list
 */
 
 t_list			*ft_lstnew(void const *content, size_t content_size);
@@ -125,9 +124,6 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 /*
 ** My functions
 */
-
-//# ifndef BUFF_SIZE
-//# define BUFF_SIZE = 1000000
 
 int				get_next_line(const int fd, char **line);
 

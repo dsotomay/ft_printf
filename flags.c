@@ -29,7 +29,8 @@ int		length(char c)
 int		specifier(char c)
 {
 	if (c == 's' || c == 'S' || c == 'p' || c == 'd' || c == 'D' || c == 'i'
-		|| c == 'o' || c == 'O' || c == 'u' || c == 'U' || c == 'x' || c == 'X' || c == 'c' || c == 'C')
+		|| c == 'o' || c == 'O' || c == 'u' || c == 'U' || c == 'x' || c == 'X'
+		|| c == 'c' || c == 'C')
 		return (1);
 	return (0);
 }

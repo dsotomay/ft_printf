@@ -12,49 +12,38 @@
 
 #include "ft_printf.h"
 
-// static	FUNC	flag(FUNC func[], int num)
-// {
-// 	func[(int)'#'] = hash;
-// 	func[(int)'0'] = zero;
-// 	func[(int)'-'] = minus;
-// 	func[(int)'+'] = plus;
-// 	func[(int)' '] = space;
-// 	return (func[num]);
-// }
-
-static	FUNC	leng(FUNC func[], int num)
+static	t_func	leng(t_func funct[], int num)
 {
-	func[(int)'h'] = h;
-	func[(int)'l'] = l;
-	func[(int)'j'] = j;
-	func[(int)'z'] = z;
-	return (func[num]);
+	funct[(int)'h'] = h;
+	funct[(int)'l'] = l;
+	funct[(int)'j'] = j;
+	funct[(int)'z'] = z;
+	return (funct[num]);
 }
 
-FUNC			spec(int num)
+t_func			spec(int num)
 {
-	static FUNC	func[128];
+	static t_func	funct[128];
+
 	if (specifier((char)num))
 	{
-		func[(int)'s'] = s;
-		func[(int)'S'] = S;
-		func[(int)'p'] = p;
-		func[(int)'d'] = d;
-		func[(int)'D'] = D;
-		func[(int)'i'] = i;
-		func[(int)'o'] = o;
-		func[(int)'O'] = O;
-		func[(int)'u'] = u;
-		func[(int)'U'] = U;
-		func[(int)'x'] = x;
-		func[(int)'X'] = X;
-		func[(int)'c'] = c;
-		func[(int)'C'] = C;
-		return (func[num]);
+		funct[(int)'s'] = s;
+		funct[(int)'S'] = up_s;
+		funct[(int)'p'] = p;
+		funct[(int)'d'] = d;
+		funct[(int)'D'] = up_d;
+		funct[(int)'i'] = i;
+		funct[(int)'o'] = o;
+		funct[(int)'O'] = up_o;
+		funct[(int)'u'] = u;
+		funct[(int)'U'] = up_u;
+		funct[(int)'x'] = x;
+		funct[(int)'X'] = up_x;
+		funct[(int)'c'] = c;
+		funct[(int)'C'] = up_c;
+		return (funct[num]);
 	}
 	if (length((char)num))
-		return (leng(func, num));
-	// if (flags((char)num))
-	// 	return (flag(func, num));
+		return (leng(funct, num));
 	return (0);
 }

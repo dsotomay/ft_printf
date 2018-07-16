@@ -13,11 +13,10 @@
 #include "ft_printf.h"
 #define INIT int i = 0; t_type type; va_list arg
 
-int ft_printf(char *format, ...)
+int	ft_printf(char *format, ...)
 {
 	INIT;
 	va_start(arg, format);
-
 	type.count = 1;
 	type.bytes = 0;
 	type.width = 0;
